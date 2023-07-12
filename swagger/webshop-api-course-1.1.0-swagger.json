@@ -1,0 +1,492 @@
+{
+  "openapi" : "3.0.0",
+  "servers" : [ {
+    "description" : "SwaggerHub API Auto Mocking",
+    "url" : "https://virtserver.swaggerhub.com/jan_vp2/webshop-api-course/1.1.0"
+  } ],
+  "info" : {
+    "version" : "1.1.0",
+    "title" : "Webshop",
+    "description" : "The API for managing the webshop products"
+  },
+  "security" : [ {
+    "bearerAuth" : [ ]
+  } ],
+  "paths" : {
+    "/register" : {
+      "post" : {
+        "tags" : [ "Users" ],
+        "description" : "Register a user",
+        "security" : [ ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/User"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Response with access token",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/LoginResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/login" : {
+      "post" : {
+        "tags" : [ "Users" ],
+        "description" : "Register a user",
+        "security" : [ ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/User"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Response with access token",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/LoginResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/products" : {
+      "get" : {
+        "tags" : [ "Products" ],
+        "description" : "returns all products",
+        "parameters" : [ {
+          "in" : "query",
+          "name" : "_page",
+          "description" : "page number",
+          "schema" : {
+            "type" : "integer",
+            "format" : "int32"
+          }
+        }, {
+          "in" : "query",
+          "name" : "_limit",
+          "description" : "max number of records to return (default=10)",
+          "schema" : {
+            "type" : "integer",
+            "format" : "int32"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "All the products",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/Product"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "Products" ],
+        "responses" : {
+          "200" : {
+            "description" : "Create a new product"
+          }
+        },
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Product"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/products/{id}" : {
+      "get" : {
+        "tags" : [ "Products" ],
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "description" : "ID of the product",
+          "example" : 123,
+          "schema" : {
+            "type" : "integer"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "response",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Product"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "Products" ],
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "description" : "ID of the product",
+          "example" : 123,
+          "schema" : {
+            "type" : "integer"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "response",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Product"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch" : {
+        "tags" : [ "Products" ],
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "description" : "ID of the product",
+          "example" : 123,
+          "schema" : {
+            "type" : "integer"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "response",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Product"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "Products" ],
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "description" : "ID of the product",
+          "example" : 123,
+          "schema" : {
+            "type" : "integer"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "response",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Product"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/images" : {
+      "get" : {
+        "tags" : [ "Images" ],
+        "description" : "returns all images",
+        "parameters" : [ {
+          "in" : "query",
+          "name" : "_page",
+          "description" : "page number",
+          "schema" : {
+            "type" : "integer",
+            "format" : "int32"
+          }
+        }, {
+          "in" : "query",
+          "name" : "_limit",
+          "description" : "max number of records to return (default=10)",
+          "schema" : {
+            "type" : "integer",
+            "format" : "int32"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "All the images",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/Image"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "Images" ],
+        "responses" : {
+          "200" : {
+            "description" : "Create a new image"
+          }
+        },
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Image"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/images/{id}" : {
+      "get" : {
+        "tags" : [ "Images" ],
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "description" : "ID of the image",
+          "example" : 123,
+          "schema" : {
+            "type" : "integer"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "response",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Image"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "Images" ],
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "description" : "ID of the image",
+          "example" : 123,
+          "schema" : {
+            "type" : "integer"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "response",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Image"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch" : {
+        "tags" : [ "Images" ],
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "description" : "ID of the image",
+          "example" : 123,
+          "schema" : {
+            "type" : "integer"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "response",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Image"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "Images" ],
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "description" : "ID of the image",
+          "example" : 123,
+          "schema" : {
+            "type" : "integer"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "response",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Image"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "Product" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "integer",
+            "description" : "ID of the product. Not necessary on creation.",
+            "example" : 123
+          },
+          "userId" : {
+            "type" : "integer",
+            "description" : "ID of the user that is the owner of the product",
+            "example" : 5
+          },
+          "name" : {
+            "type" : "string",
+            "description" : "Name of the product",
+            "example" : "Sample product"
+          },
+          "imageId" : {
+            "type" : "integer",
+            "description" : "ID of the image of the product",
+            "example" : 4
+          },
+          "price" : {
+            "type" : "number",
+            "description" : "Price of the product (in euro)",
+            "example" : 32.1
+          }
+        }
+      },
+      "Image" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "integer",
+            "description" : "ID of the image. Not necessary on creation.",
+            "example" : 123
+          },
+          "userId" : {
+            "type" : "integer",
+            "description" : "ID of the user that is the owner of the image",
+            "example" : 5
+          },
+          "name" : {
+            "type" : "string",
+            "description" : "Name of the image",
+            "example" : "Sample image"
+          },
+          "base64" : {
+            "type" : "string",
+            "description" : "Base64 encoded image",
+            "example" : "/9j/4AAQSkZJRgABAQEAlgCWAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAcADIDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDxqLwe0nIjYd+QRU8fha4j+6XX8xXrEljbx2xcXNuOdq7mC5OcY5OP/wBY9RUGm2z6ksP2WJZ5JWAQJnL56YHPX614rnUa1ue4qcDitP0m40uwOp6nqt3aWiyiCKOBi0k8mM7VBOAAOpPr0POHXfj9LCRQIbyXHAWa83P/AOOrivoXSvhzDJ4Wns/E9lb3CyTCdIwxLwnbj7w6H/dNZ2neBfDug+Y+m6XFHO3WZwJW/AuDiupYWnKF5wuzinWfPaL0OF8H6pd+JdLlvXXUdLiT7kz7HV855AZckceuKxfGGpeL/Dl7Eq6nbXdpcJ5kEy26Ydc4ORjgjuK77xBZ3NyPJjkuJ+CEhLgKf0B7+tctq3gnxHPpLalqcTrHbkxLCCC0Ma99oz8vXkZ7k+tcVTL6GrdJfcmdEKr0XOedN4s8SFiTLbZz/wA8Foq82mQ7jmdev+1/hRWf1bD/AMi+41tPuy3Jq0N1BDNcM4W2DyeZcxSwvNGcrlJIiMKE654LHjdzWh8MfGMGjeOrLxFrED2/h24L2kFwX3JbnYFJ55OMLnGeGPuK4yKNLlLyxIKWsbRYRXY53uF6kk/KAAAMDjnNZ2ps0mq6zHO7zJYxrBErMQPLUqoU4xxj0xXsK17nFK9rH1F8RPGHibQb+w1e3uNPl8MvJ+6e3dTFcKxwodjk7sHPy8HbkdwGp8XPB91bK95cPaSuudskRIP0IBB/rXzpe6zqnhO5uofD2o3FlaR7V+yqQ8D8Dlo2BVj7kVR/4WTfXHzX+h+GruXHMj6aqMeMZ/dleapX3Rk0loz1zxL8U/DN1d/YrS6mjEp2C5S38wIT6rkE/hmt/wAP+Ore3TULma9I0a3SFTeXUbQtNKsYV2CHnBIGBjJOa+aJvFsscpew0nRrGT+9DbbyP+/hase+1S+1WdW1C7mnIPyhm4X6DoPwp8t0S5W0PX73Xo7i8nntlEUEkjPGnyjapOQPwFFeYxO4jT95J0H8Rorm+rxOpYiR/9k="
+          }
+        }
+      },
+      "User" : {
+        "type" : "object",
+        "required" : [ "email", "password" ],
+        "properties" : {
+          "id" : {
+            "type" : "integer",
+            "description" : "ID of the user. Not necessary on creation.",
+            "example" : 123
+          },
+          "email" : {
+            "type" : "string",
+            "description" : "Email of the user",
+            "example" : "someone@tag-team.be"
+          },
+          "password" : {
+            "type" : "string",
+            "description" : "Password of the user. Will be stored encrypted.",
+            "example" : "a1b2c3"
+          },
+          "name" : {
+            "type" : "string",
+            "description" : "Name of the user",
+            "example" : "Joske"
+          }
+        }
+      },
+      "LoginResponse" : {
+        "type" : "object",
+        "properties" : {
+          "accessToken" : {
+            "type" : "string",
+            "description" : "JWT token that must be used for authentication",
+            "example" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNvbWVvbmVAdGFnLXRlYW0uYmUiLCJpYXQiOjE2ODkxNTQ4MDEsImV4cCI6MTY4OTE1ODQwMSwic3ViIjoiMyJ9.RU8iY7I2zZb6N_v_b9Njsr3VuW-3BVA7HXQ-nGEXFTU"
+          },
+          "user" : {
+            "$ref" : "#/components/schemas/User"
+          }
+        }
+      }
+    },
+    "securitySchemes" : {
+      "bearerAuth" : {
+        "type" : "http",
+        "scheme" : "bearer",
+        "bearerFormat" : "JWT"
+      }
+    }
+  }
+}

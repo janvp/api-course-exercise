@@ -1,18 +1,21 @@
 .main {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
-  padding: 6rem;
+  padding: 4rem 6rem;
   min-height: 100vh;
 }
 
 .description {
+  margin-top: 2rem;
   display: inherit;
+  gap: 20px;
   justify-content: inherit;
   align-items: inherit;
+  flex-wrap: wrap;
   font-size: 0.85rem;
-  max-width: var(--max-width);
+  /* max-width: var(--max-width); */
   width: 100%;
   z-index: 2;
   font-family: var(--font-mono);
@@ -25,13 +28,23 @@
   gap: 0.5rem;
 }
 
-.description p {
+.product {
   position: relative;
   margin: 0;
   padding: 1rem;
   background-color: rgba(var(--callout-rgb), 0.5);
   border: 1px solid rgba(var(--callout-border-rgb), 0.3);
   border-radius: var(--border-radius);
+}
+
+.product img {
+  width: 200px;
+}
+
+.product .owner {
+  margin-top: 0.5rem;
+  font-size: smaller;
+  font-style: italic;
 }
 
 .code {
@@ -107,6 +120,7 @@
 .logo {
   position: relative;
 }
+
 /* Enable hover only on non-touch devices */
 @media (hover: hover) and (pointer: fine) {
   .card:hover {
@@ -163,13 +177,13 @@
     padding: 1rem;
   }
 
-  .description p,
+  /* .description p,
   .description div {
     display: flex;
     justify-content: center;
     position: fixed;
     width: 100%;
-  }
+  } */
 
   .description p {
     align-items: center;
@@ -178,28 +192,24 @@
     border-radius: 0;
     border: none;
     border-bottom: 1px solid rgba(var(--callout-border-rgb), 0.25);
-    background: linear-gradient(
-      to bottom,
-      rgba(var(--background-start-rgb), 1),
-      rgba(var(--callout-rgb), 0.5)
-    );
+    background: linear-gradient(to bottom,
+        rgba(var(--background-start-rgb), 1),
+        rgba(var(--callout-rgb), 0.5));
     background-clip: padding-box;
     backdrop-filter: blur(24px);
   }
 
-  .description div {
+  /* .description div {
     align-items: flex-end;
     pointer-events: none;
     inset: auto 0 0;
     padding: 2rem;
     height: 200px;
-    background: linear-gradient(
-      to bottom,
-      transparent 0%,
-      rgb(var(--background-end-rgb)) 40%
-    );
+    background: linear-gradient(to bottom,
+        transparent 0%,
+        rgb(var(--background-end-rgb)) 40%);
     z-index: 1;
-  }
+  } */
 }
 
 /* Tablet and Smaller Desktop */
@@ -223,6 +233,7 @@
   from {
     transform: rotate(360deg);
   }
+
   to {
     transform: rotate(0deg);
   }
