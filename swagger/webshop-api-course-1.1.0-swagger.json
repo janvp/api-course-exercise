@@ -44,7 +44,7 @@
     "/login" : {
       "post" : {
         "tags" : [ "Users" ],
-        "description" : "Register a user",
+        "description" : "Log a user in",
         "security" : [ ],
         "requestBody" : {
           "content" : {
