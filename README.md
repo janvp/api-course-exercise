@@ -18,7 +18,7 @@ npm install -g json-server json-server-auth
 
 Start the JSON server:
 ```bash
-json-server-auth db.json -p 3001 -r routes.json
+json-server-auth db.json -p 3001 -r routes.json (--host 192.168.0.xxx)
 ```
 
-API calls can be done on http://localhost:3001 (see swagger folder for API specifications).
+API calls can be done on http://localhost:3001 or http://192.168.0.xxx:3001 if you add the host parameter (see swagger folder for API specifications).
