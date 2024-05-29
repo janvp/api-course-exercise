@@ -22,7 +22,7 @@
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/User"
+                "$ref" : "#/components/schemas/RegisterUser"
               }
             }
           }
@@ -50,7 +50,7 @@
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/User"
+                "$ref" : "#/components/schemas/LoginUser"
               }
             }
           }
@@ -72,7 +72,6 @@
     "/products" : {
       "get" : {
         "tags" : [ "Products" ],
-        "description" : "returns all products",
         "parameters" : [ {
           "in" : "query",
           "name" : "_page",
@@ -92,13 +91,13 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "All the products",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
                   "type" : "array",
                   "items" : {
-                    "$ref" : "#/components/schemas/Product"
+                    "$ref" : "#/components/schemas/ProductResponse"
                   }
                 }
               }
@@ -109,8 +108,15 @@
       "post" : {
         "tags" : [ "Products" ],
         "responses" : {
-          "200" : {
-            "description" : "Create a new product"
+          "201" : {
+            "description" : "Created",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProductResponse"
+                }
+              }
+            }
           }
         },
         "requestBody" : {
@@ -143,7 +149,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Product"
+                  "$ref" : "#/components/schemas/ProductResponse"
                 }
               }
             }
@@ -162,13 +168,22 @@
             "type" : "integer"
           }
         } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Product"
+              }
+            }
+          }
+        },
         "responses" : {
           "200" : {
-            "description" : "response",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Product"
+                  "$ref" : "#/components/schemas/ProductResponse"
                 }
               }
             }
@@ -187,13 +202,22 @@
             "type" : "integer"
           }
         } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Product"
+              }
+            }
+          }
+        },
         "responses" : {
           "200" : {
-            "description" : "response",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Product"
+                  "$ref" : "#/components/schemas/ProductResponse"
                 }
               }
             }
@@ -214,11 +238,11 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "response",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Product"
+                  "type" : "object"
                 }
               }
             }
@@ -232,9 +256,29 @@
       "Product" : {
         "type" : "object",
         "properties" : {
+          "userId" : {
+            "type" : "integer",
+            "description" : "ID of the user that is the owner of the product",
+            "example" : 5
+          },
+          "name" : {
+            "type" : "string",
+            "description" : "Name of the product",
+            "example" : "Sample product"
+          },
+          "price" : {
+            "type" : "number",
+            "description" : "Price of the product (in euro)",
+            "example" : 32.1
+          }
+        }
+      },
+      "ProductResponse" : {
+        "type" : "object",
+        "properties" : {
           "id" : {
             "type" : "integer",
-            "description" : "ID of the product. Not necessary on creation.",
+            "description" : "ID of the product.",
             "example" : 123
           },
           "userId" : {
@@ -256,13 +300,29 @@
       },
       "User" : {
         "type" : "object",
-        "required" : [ "email", "password" ],
+        "required" : [ "email" ],
         "properties" : {
           "id" : {
             "type" : "integer",
-            "description" : "ID of the user. Not necessary on creation.",
+            "description" : "ID of the user.",
             "example" : 123
           },
+          "email" : {
+            "type" : "string",
+            "description" : "Email of the user",
+            "example" : "someone@tag-team.be"
+          },
+          "name" : {
+            "type" : "string",
+            "description" : "Name of the user",
+            "example" : "Joske"
+          }
+        }
+      },
+      "RegisterUser" : {
+        "type" : "object",
+        "required" : [ "email", "password" ],
+        "properties" : {
           "email" : {
             "type" : "string",
             "description" : "Email of the user",
@@ -277,6 +337,22 @@
             "type" : "string",
             "description" : "Name of the user",
             "example" : "Joske"
+          }
+        }
+      },
+      "LoginUser" : {
+        "type" : "object",
+        "required" : [ "email", "password" ],
+        "properties" : {
+          "email" : {
+            "type" : "string",
+            "description" : "Email of the user",
+            "example" : "someone@tag-team.be"
+          },
+          "password" : {
+            "type" : "string",
+            "description" : "Password of the user. Will be stored encrypted.",
+            "example" : "a1b2c3"
           }
         }
       },

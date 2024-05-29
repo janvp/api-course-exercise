@@ -22,7 +22,7 @@
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/User"
+                "$ref" : "#/components/schemas/RegisterUser"
               }
             }
           }
@@ -50,7 +50,7 @@
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/User"
+                "$ref" : "#/components/schemas/LoginUser"
               }
             }
           }
@@ -72,7 +72,6 @@
     "/products" : {
       "get" : {
         "tags" : [ "Products" ],
-        "description" : "returns all products",
         "parameters" : [ {
           "in" : "query",
           "name" : "_page",
@@ -92,13 +91,13 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "All the products",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
                   "type" : "array",
                   "items" : {
-                    "$ref" : "#/components/schemas/Product"
+                    "$ref" : "#/components/schemas/ProductResponse"
                   }
                 }
               }
@@ -109,8 +108,15 @@
       "post" : {
         "tags" : [ "Products" ],
         "responses" : {
-          "200" : {
-            "description" : "Create a new product"
+          "201" : {
+            "description" : "Created",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProductResponse"
+                }
+              }
+            }
           }
         },
         "requestBody" : {
@@ -143,7 +149,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Product"
+                  "$ref" : "#/components/schemas/ProductResponse"
                 }
               }
             }
@@ -162,13 +168,22 @@
             "type" : "integer"
           }
         } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Product"
+              }
+            }
+          }
+        },
         "responses" : {
           "200" : {
-            "description" : "response",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Product"
+                  "$ref" : "#/components/schemas/ProductResponse"
                 }
               }
             }
@@ -187,13 +202,22 @@
             "type" : "integer"
           }
         } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Product"
+              }
+            }
+          }
+        },
         "responses" : {
           "200" : {
-            "description" : "response",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Product"
+                  "$ref" : "#/components/schemas/ProductResponse"
                 }
               }
             }
@@ -214,11 +238,11 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "response",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Product"
+                  "type" : "object"
                 }
               }
             }
@@ -229,7 +253,6 @@
     "/images" : {
       "get" : {
         "tags" : [ "Images" ],
-        "description" : "returns all images",
         "parameters" : [ {
           "in" : "query",
           "name" : "_page",
@@ -249,13 +272,13 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "All the images",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
                   "type" : "array",
                   "items" : {
-                    "$ref" : "#/components/schemas/Image"
+                    "$ref" : "#/components/schemas/ImageResponse"
                   }
                 }
               }
@@ -265,16 +288,23 @@
       },
       "post" : {
         "tags" : [ "Images" ],
-        "responses" : {
-          "200" : {
-            "description" : "Create a new image"
-          }
-        },
         "requestBody" : {
           "content" : {
             "application/json" : {
               "schema" : {
                 "$ref" : "#/components/schemas/Image"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "201" : {
+            "description" : "Created",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ImageResponse"
+                }
               }
             }
           }
@@ -296,11 +326,11 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "response",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Image"
+                  "$ref" : "#/components/schemas/ImageResponse"
                 }
               }
             }
@@ -319,13 +349,22 @@
             "type" : "integer"
           }
         } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Image"
+              }
+            }
+          }
+        },
         "responses" : {
           "200" : {
-            "description" : "response",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Image"
+                  "$ref" : "#/components/schemas/ImageResponse"
                 }
               }
             }
@@ -344,13 +383,22 @@
             "type" : "integer"
           }
         } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Image"
+              }
+            }
+          }
+        },
         "responses" : {
           "200" : {
-            "description" : "response",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Image"
+                  "$ref" : "#/components/schemas/ImageResponse"
                 }
               }
             }
@@ -371,11 +419,11 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "response",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Image"
+                  "type" : "object"
                 }
               }
             }
@@ -389,9 +437,34 @@
       "Product" : {
         "type" : "object",
         "properties" : {
+          "userId" : {
+            "type" : "integer",
+            "description" : "ID of the user that is the owner of the product",
+            "example" : 5
+          },
+          "name" : {
+            "type" : "string",
+            "description" : "Name of the product",
+            "example" : "Sample product"
+          },
+          "imageId" : {
+            "type" : "integer",
+            "description" : "ID of the image of the product",
+            "example" : 4
+          },
+          "price" : {
+            "type" : "number",
+            "description" : "Price of the product (in euro)",
+            "example" : 32.1
+          }
+        }
+      },
+      "ProductResponse" : {
+        "type" : "object",
+        "properties" : {
           "id" : {
             "type" : "integer",
-            "description" : "ID of the product. Not necessary on creation.",
+            "description" : "ID of the product.",
             "example" : 123
           },
           "userId" : {
@@ -419,9 +492,29 @@
       "Image" : {
         "type" : "object",
         "properties" : {
+          "userId" : {
+            "type" : "integer",
+            "description" : "ID of the user that is the owner of the image",
+            "example" : 5
+          },
+          "name" : {
+            "type" : "string",
+            "description" : "Name of the image",
+            "example" : "Sample image"
+          },
+          "base64" : {
+            "type" : "string",
+            "description" : "Base64 encoded image",
+            "example" : "/9j/4AAQSkZJRgABAQEAlgCWAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAcADIDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDxqLwe0nIjYd+QRU8fha4j+6XX8xXrEljbx2xcXNuOdq7mC5OcY5OP/wBY9RUGm2z6ksP2WJZ5JWAQJnL56YHPX614rnUa1ue4qcDitP0m40uwOp6nqt3aWiyiCKOBi0k8mM7VBOAAOpPr0POHXfj9LCRQIbyXHAWa83P/AOOrivoXSvhzDJ4Wns/E9lb3CyTCdIwxLwnbj7w6H/dNZ2neBfDug+Y+m6XFHO3WZwJW/AuDiupYWnKF5wuzinWfPaL0OF8H6pd+JdLlvXXUdLiT7kz7HV855AZckceuKxfGGpeL/Dl7Eq6nbXdpcJ5kEy26Ydc4ORjgjuK77xBZ3NyPJjkuJ+CEhLgKf0B7+tctq3gnxHPpLalqcTrHbkxLCCC0Ma99oz8vXkZ7k+tcVTL6GrdJfcmdEKr0XOedN4s8SFiTLbZz/wA8Foq82mQ7jmdev+1/hRWf1bD/AMi+41tPuy3Jq0N1BDNcM4W2DyeZcxSwvNGcrlJIiMKE654LHjdzWh8MfGMGjeOrLxFrED2/h24L2kFwX3JbnYFJ55OMLnGeGPuK4yKNLlLyxIKWsbRYRXY53uF6kk/KAAAMDjnNZ2ps0mq6zHO7zJYxrBErMQPLUqoU4xxj0xXsK17nFK9rH1F8RPGHibQb+w1e3uNPl8MvJ+6e3dTFcKxwodjk7sHPy8HbkdwGp8XPB91bK95cPaSuudskRIP0IBB/rXzpe6zqnhO5uofD2o3FlaR7V+yqQ8D8Dlo2BVj7kVR/4WTfXHzX+h+GruXHMj6aqMeMZ/dleapX3Rk0loz1zxL8U/DN1d/YrS6mjEp2C5S38wIT6rkE/hmt/wAP+Ore3TULma9I0a3SFTeXUbQtNKsYV2CHnBIGBjJOa+aJvFsscpew0nRrGT+9DbbyP+/hase+1S+1WdW1C7mnIPyhm4X6DoPwp8t0S5W0PX73Xo7i8nntlEUEkjPGnyjapOQPwFFeYxO4jT95J0H8Rorm+rxOpYiR/9k="
+          }
+        }
+      },
+      "ImageResponse" : {
+        "type" : "object",
+        "properties" : {
           "id" : {
             "type" : "integer",
-            "description" : "ID of the image. Not necessary on creation.",
+            "description" : "ID of the image.",
             "example" : 123
           },
           "userId" : {
@@ -443,13 +536,29 @@
       },
       "User" : {
         "type" : "object",
-        "required" : [ "email", "password" ],
+        "required" : [ "email" ],
         "properties" : {
           "id" : {
             "type" : "integer",
-            "description" : "ID of the user. Not necessary on creation.",
+            "description" : "ID of the user.",
             "example" : 123
           },
+          "email" : {
+            "type" : "string",
+            "description" : "Email of the user",
+            "example" : "someone@tag-team.be"
+          },
+          "name" : {
+            "type" : "string",
+            "description" : "Name of the user",
+            "example" : "Joske"
+          }
+        }
+      },
+      "RegisterUser" : {
+        "type" : "object",
+        "required" : [ "email", "password" ],
+        "properties" : {
           "email" : {
             "type" : "string",
             "description" : "Email of the user",
@@ -464,6 +573,22 @@
             "type" : "string",
             "description" : "Name of the user",
             "example" : "Joske"
+          }
+        }
+      },
+      "LoginUser" : {
+        "type" : "object",
+        "required" : [ "email", "password" ],
+        "properties" : {
+          "email" : {
+            "type" : "string",
+            "description" : "Email of the user",
+            "example" : "someone@tag-team.be"
+          },
+          "password" : {
+            "type" : "string",
+            "description" : "Password of the user. Will be stored encrypted.",
+            "example" : "a1b2c3"
           }
         }
       },
